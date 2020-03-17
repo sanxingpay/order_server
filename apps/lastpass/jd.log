@@ -1,0 +1,4 @@
+2019/10/16 21:15:08 root ERROR 40 142 4a5049c13ed8585d82947fe65ae92cfb==>>>>>>>>Value for header {Cookie: (1212,)} must be of type str or bytes, not <class 'tuple'>
+2019/10/16 21:16:09 root ERROR 40 142 4a5049c13ed8585d82947fe65ae92cfb==>>>>>>>>Value for header {Cookie: (1212,)} must be of type str or bytes, not <class 'tuple'>
+2019/10/16 21:16:39 root ERROR 40 143 4a5049c13ed8585d82947fe65ae92cfb==>>>>>>>>Value for header {Cookie: (1212,)} must be of type str or bytes, not <class 'tuple'>
+2019/10/16 21:34:36 root ERROR 40 144 14177ae1e5cdac8857b9c9f5ea9590ab==>>>>>>>>Invalid URL 'None': No schema supplied. Perhaps you meant http://None?

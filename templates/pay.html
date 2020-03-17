@@ -1,0 +1,33 @@
+
+<html lang="zh-CN"><head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>傲银支付</title>
+</head>
+<body>
+<div class="container">
+    <div class="row" style="margin:15px;">
+        <div class="col-md-12">
+            <form class="form-inline" method="post" action="{{ data.create_order_url }}">
+                <input type="hidden" name="pay_amount" value="{{ data.pay_amount}}">
+                <input type="hidden" name="pay_applydate" value="{{ data.pay_applydate}}">
+                <input type="hidden" name="pay_bankcode" value="{{ data.pay_bankcode}}">
+                <input type="hidden" name="pay_callbackurl" value="{{ data.pay_callbackurl}}">
+                <input type="hidden" name="pay_memberid" value="{{ data.pay_memberid}}">
+                <input type="hidden" name="pay_notifyurl" value="{{ data.pay_notifyurl}}">
+                <input type="hidden" name="pay_orderid" value="{{ data.pay_orderid}}">
+                <input type="hidden" name="pay_md5sign" value="{{data.pay_md5sign}}">
+                <input type="hidden" name="pay_productname" value="{{data.pay_productname}}">
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="http://allwin6666.com/static/jquery-1.4.1.min.js"></script>
+
+<script>
+$(function(){document.querySelector('form').submit();})
+;</script>
+</body>
+</html>

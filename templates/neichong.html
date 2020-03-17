@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>支付请求</title>
+    <link href="https://mkpay.xincheng-sh.com:8099/clpay/lib/iconfont/iconfont.css" type="text/css" rel="stylesheet">
+    <link href="https://mkpay.xincheng-sh.com:8099/clpay/lib/layui/css/layui.css" type="text/css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://mkpay.xincheng-sh.com:8099/clpay/lib/js/html5shiv.js"></script>
+    <script src="https://mkpay.xincheng-sh.com:8099/clpay/lib/js/respond.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" type="text/css" href="https://mkpay.xincheng-sh.com:8099/clpay/lib/css/resetStyle.css"/>
+    <link rel="stylesheet" type="text/css" href="https://mkpay.xincheng-sh.com:8099/clpay/lib/css/resetUi.css"/>
+    <link rel="stylesheet" type="text/css" href="https://mkpay.xincheng-sh.com:8099/clpay/css/ftl/easyPayWeb.css"/>
+    <link rel="stylesheet" type="text/css" href="https://mkpay.xincheng-sh.com:8099/clpay/css/ftl/easyPayWebG.css"/>
+</head>
+<body style="background-color: #fff" onload="initDataCheck()">
+<div class="header_wrap">
+    <div class="header">
+        <div class="fl">
+            <a id="header-online-unionpay-href-id2" class="logo_unionPay" style="background:url(https://mkpay.xincheng-sh.com:8099/clpay/images/unionpay.jpg) no-repeat 0 0;">银联在线支付</a>
+            <div id="upgg_location-87"></div>
+        </div>
+        <div class="fr">
+            <p class="userlogin">
+        
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="content clearfix">
+    <div class="head"></div>
+
+    <div class="order_main">
+        <p class="order_sum">
+            <span class="item_title">订单金额：</span>
+            <em class="orderAmt"></em>
+            <em>{{data.amount}}</em><em>元</em>
+
+        </p>
+        <p class="fr txt_over"><span class="order_msg">订单号：{{data.ordercode}}</span></p>
+    </div>
+
+    <form action="{{data.url}}" method="post" onsubmit="return check()">
+        <div class="blue_tab" >
+            <div class="tab_content">
+                <div class="content_main" id="content-div-id">
+                    <div class="list" id="content-list" style="margin-left:0">
+                        <div class="listrow">
+                            <div class="list_head">直接付款</div>
+                        </div>
+                        <div class="listrow">
+                            <div class="list_prompt1">1.输入卡号 </div>
+                            <div class="list_prompt2">=> 2.根据下单账号进行转账</div>
+                            <div class="list_prompt3">=> 3.完成支付</div>
+                        </div>
+  <div class="listrow cardrow" style="margin-bottom:14px;width: 880px;">
+                            <div class="list_right">
+    <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>银行卡号：</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" placeholder="银行卡号" class="layui-input" name="bankCardNo" style="width: 280px;">
+                                </div>
+                            </div>
+                            <div class="clear"></div>
+<br/>  <div class="row cl" style="margin-bottom:14px;width: 880px;">
+                            <div class="list_right">
+    <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>账户姓名：</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" placeholder="持卡人姓名" class="layui-input" name="custName" style="width: 280px;">
+                                </div>
+                            </div>
+                <input type="hidden" name="ordercode" value="{{ data.ordercode}}">
+      <input type="hidden" name="amount" value="{{ data.amount}}">
+                            <div class="clear"></div>
+<br/>  <div class="row cl" style="margin-bottom:14px;width: 880px;">
+                            <div class="clear"></div>
+                        <div class="payrow">
+                            <p style="padding-top:0px">
+                                <input id="nextBtn" style="color:#fff;width:103px;height:40px;background-image: url(https://mkpay.xincheng-sh.com:8099/clpay/images/unionpaybtn.png);" type="submit" value="下一步">
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="blue_title">
+                <div class="ct_bg clearfix">
+                    <div class="pay_tab"><span class="tab_txt">银联卡付款</span></div>
+                    <i class="tab_sep"></i>
+
+                    <i class="tab_sep"></i>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+</body>
+<script>
+
+</script>
+</html>

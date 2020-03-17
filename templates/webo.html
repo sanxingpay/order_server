@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html>
+        <head>
+        <meta charset="utf-8">
+        <title>微博红包</title>
+        </head>
+        <body>
+        <form action="https://openapi.alipay.com/gateway.do?charset=UTF-8" method="POST" id="alipayForm">
+        <input name="app_id" type="hidden" value="{{data.app_id}}"/>
+        <input name="method" type="hidden" value="{{data.method}}"/>
+        <input name="format" type="hidden" value="{{data.format}}"/>
+        <input name="charset" type="hidden" value="{{data.charset}}"/>
+        <input name="sign_type" type="hidden" value="{{data.sign_type}}"/>
+        <input name="timestamp" type="hidden" value="{{data.timestamp}}"/>
+        <input name="version" type="hidden" value="{{data.version}}"/>
+        <input name="notify_url" type="hidden" value="{{data.notify_url}}"/>
+        <input name="biz_content" type="hidden" value="{{data.biz_content}}"/>
+        <input name="sign" type="hidden" value="{{data.sign}}"/>
+        </form>
+        <script>
+                document.getElementById('alipayForm').submit();
+        </script>
+        </body>
+</html>
