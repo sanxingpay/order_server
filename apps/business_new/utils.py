@@ -2,6 +2,7 @@
 import hashlib
 import json
 import base64
+import hmac
 
 from requests import request
 
@@ -374,6 +375,18 @@ class SignBase(object):
         return hashlib.sha256(signData.encode(self.signRules['signEncode'])).hexdigest().upper() \
             if self.signRules.get('dataType', None) == 'upper' else hashlib.sha256(
             signData.encode(self.signRules['signEncode'])).hexdigest()
+
+    def hmacsha256(self):
+        signData = self.hashBeforeHandler()
+        print(self.hashData)
+        print(signData)
+        return hmac.new(self.hashData['secret'].encode(self.signRules['signEncode']),
+                        signData.encode(self.signRules['signEncode']),
+                        digestmod=hashlib.sha256).hexdigest().upper() \
+            if self.signRules.get('dataType', None) == 'upper' else \
+                        hmac.new(self.hashData['secret'].encode(self.signRules['signEncode']),
+                            signData.encode(self.signRules['signEncode']),
+                            digestmod=hashlib.sha256).hexdigest()
 
     def rsa_ecb_pkcs1padding(self):
         signData = self.hashBeforeHandler()
