@@ -129,6 +129,8 @@ class CreateOrder(object):
             if str(self.paypasslinktype.passid) == '74':
                 token = LastPass_WEIFU().get_token()
 
+            rules = json.loads(self.paypasslinktype.rules)
+
             return {"path": CreateOrderForLastPass(
                     rules = json.loads(self.paypasslinktype.rules),
                     passid = self.paypasslinktype.passid,
@@ -136,7 +138,7 @@ class CreateOrder(object):
                         amount=self.order.amount,
                         ordercode=self.order.ordercode,
                         clientIp = self.order.client_ip,
-                        callbackUrl = url_join('/callback_api/lastpass/callback'),
+                        callbackUrl = url_join('/callback_api/lastpass/callback_custom')  if "isamount" in rules["callback"] and  rules["callback"]["isamount"] == '0'  else url_join('/callback_api/lastpass/callback'),
                         returnUrl = url_join("/pay/#/juli"),
                         token = token
                     )
