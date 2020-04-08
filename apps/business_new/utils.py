@@ -367,6 +367,14 @@ class SignBase(object):
         return hashlib.md5(signData.encode(self.signRules['signEncode'])).hexdigest().upper() \
             if self.signRules.get('dataType',None) == 'upper' else hashlib.md5(signData.encode(self.signRules['signEncode'])).hexdigest()
 
+
+    def sha256(self):
+        signData = self.hashBeforeHandler()
+        logger.info("请求待签名字符串：{}".format(signData))
+        return hashlib.sha256(signData.encode(self.signRules['signEncode'])).hexdigest().upper() \
+            if self.signRules.get('dataType', None) == 'upper' else hashlib.sha256(
+            signData.encode(self.signRules['signEncode'])).hexdigest()
+
     def rsa_ecb_pkcs1padding(self):
         signData = self.hashBeforeHandler()
         logger.info("请求待签名字符串：{}".format(signData))
