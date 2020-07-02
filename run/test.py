@@ -1,11 +1,8 @@
 
 
 
-b={
-    "money":100,
-    "pay_type":"1",
-    "trade_type":"T1"
-}
-a='/{"money":{money},"pay_type":"{pay_type}","trade_type":"{trade_type}"/}'
+import urllib.parse
 
-print(a.format(**b))
+url="http://120.77.243.64/callback_api/lastpass/callback"
+
+print(urllib.parse.quote(url,'utf-8'))

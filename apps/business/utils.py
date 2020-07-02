@@ -15,6 +15,7 @@ from apps.utils import RedisOrderCreate
 from apps.business.weiboCallback import callback,callbackGetOrdercode
 from libs.utils.mytime import UtilTime
 from apps.weibohongbao.weibosys import weiboSysRun
+import urllib.parse
 
 from apps.business_new.utils import CreateOrderForLastPass
 from apps.lastpass.utils import LastPass_JLF,LastPass_TY,LastPass_DD,\
@@ -131,6 +132,8 @@ class CreateOrder(object):
 
             rules = json.loads(self.paypasslinktype.rules)
 
+            callbackUrl = url_join('/callback_api/lastpass/callback_custom')  if "isamount" in rules["callback"] and  rules["callback"]["isamount"] == '0'  else url_join('/callback_api/lastpass/callback')
+            returnUrl = url_join("/pay/#/juli")
             return {"path": CreateOrderForLastPass(
                     rules = json.loads(self.paypasslinktype.rules),
                     passid = self.paypasslinktype.passid,
@@ -138,9 +141,12 @@ class CreateOrder(object):
                         amount=self.order.amount,
                         ordercode=self.order.ordercode,
                         clientIp = self.order.client_ip,
-                        callbackUrl = url_join('/callback_api/lastpass/callback_custom')  if "isamount" in rules["callback"] and  rules["callback"]["isamount"] == '0'  else url_join('/callback_api/lastpass/callback'),
-                        returnUrl = url_join("/pay/#/juli"),
-                        token = token
+                        callbackUrl = callbackUrl,
+                        returnUrl = returnUrl,
+                        callbackUrlBm = urllib.parse.quote(callbackUrl,'utf-8'),
+                        returnUrlBm = urllib.parse.quote(returnUrl,'utf-8'),
+                        token = token,
+                        timestamp = UtilTime().timestamp
                     )
             ).run()}
         else:
